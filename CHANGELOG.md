@@ -1,5 +1,12 @@
 # Changelog
 
+## [Unreleased] – UI/UX Refinement
+
+- Hero-Texte und vertikale Abstände für kleine iPhone-Displays kompakter gestaltet
+- Beispielkarte als Beispielprofil gekennzeichnet und auf Smartphones gerade sowie überlappungsfrei ausgerichtet
+- Zahlenleiste durch drei verständliche Schritte „So funktioniert StudyMatch“ ersetzt
+- Mobile Breakpoints für 375–430 px präzisiert, ohne Farbpalette, Typografie oder Produktlogik zu verändern
+
 ## [Unreleased] – Professional UI/UX Redesign
 
 - Visuelle Identität auf seriöses Dunkelblau/Petrol, neutrale Flächen und dezente Akzentfarben umgestellt
