@@ -23,6 +23,9 @@ Hochschulangebote, Zulassungsaussagen oder Studienplatzversprechen dargestellt w
   sinnvolle semantische HTML-Elemente.
 - Neue Matching-Regeln müssen nachvollziehbar sein und in der README erklärt werden.
 - Keine erfundenen Hochschulen, Studienordnungen, Zulassungsvoraussetzungen oder offiziellen Links.
+- Neue Studienprofile dürfen nur mit einer überprüfbaren offiziellen Hochschulquelle aufgenommen
+  werden; Quelle und Recherche-/Prüfdatum gehören in die README.
+- Keine NC-Werte, Bewerbungsfristen, Gehälter oder Zulassungsaussagen aus Such-Snippets ableiten.
 - „Unsicher“-Antworten dürfen den Score nicht negativ verzerren.
 - Bestehende Änderungen anderer Personen niemals zurücksetzen; nur den eigenen Scope bearbeiten.
 

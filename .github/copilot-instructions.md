@@ -13,6 +13,9 @@
 - Erstelle Pull Requests gegen `main`; niemals automatisch mergen.
 - Der Studiengang-Explorer darf ausschließlich klar gekennzeichnete Demodaten anzeigen, solange
   keine geprüfte Datenquelle mit Pflegeprozess vorhanden ist.
+- Offizielle Hochschul-Links dürfen nur nach Prüfung der konkreten Studiengangsseite ergänzt werden;
+  Suchportale, Rankings und aggregierte Datenbanken sind keine Primärquellen.
+- Quellenlinks mit `target="_blank"` müssen `rel="noopener noreferrer"` verwenden.
 - Halte den Vergleich auf maximal drei Studiengänge begrenzt und stelle auf Mobilgeräten horizontales
   Scrollen statt abgeschnittener Tabellen bereit.
 - Bei Änderungen an `localStorage` dokumentiere Schlüssel, Datenumfang und Löschverhalten in der README.

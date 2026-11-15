@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import fs from "node:fs";
 
 const weights = { interest: 2, subjects: 1.5, strength: 2, creativity: 1.5, analysis: 1.5, career: 2, environment: 1.5, math: 1, programming: 1, mode: 1, region: 0.75 };
 
@@ -26,4 +27,11 @@ test("unsure answers do not reduce the score", () => {
   const certain = calculateScore({ interest: "tech", strength: "analytical" }, profile);
   const uncertain = calculateScore({ interest: "tech", strength: "unsure", career: "unsure" }, profile);
   assert.equal(certain, uncertain);
+});
+
+test("the app contains a curated set of official programme sources", () => {
+  const source = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
+  const links = source.match(/officialUrl:/g) || [];
+  assert.ok(links.length >= 8);
+  assert.doesNotMatch(source, /example\.com|wikipedia\.org/);
 });
