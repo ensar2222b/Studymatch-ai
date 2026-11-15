@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0] – Verified Study Sources & Core Quality
+
+- Zehn kuratierte Studiengangsprofile mit offiziellen Hochschul-Links
+- Explorer-Suche nach Studiengang, Hochschule und Beschreibung
+- Quellenhinweise in Explorer, Detailansicht, Ergebnissen und Vergleich
+- Externe Google-Fonts-Abhängigkeit entfernt, um Ladezeit und Offline-Fallback zu verbessern
+- README um Quellen, Recherche-Stand, Einschränkungen und Datenpflege-Hinweise ergänzt
+
 ## [1.2.0] – Major Product Upgrade
 
 - Premium Light-/Dark-Mode mit Systempräferenz und manueller Umschaltung
