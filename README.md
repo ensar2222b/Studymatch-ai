@@ -1,55 +1,54 @@
 # StudyMatch AI
 
-> **Version 1.1 · Statischer Studienorientierungs-Prototyp für Deutschland**
+> **Version 1.2 · Moderne Studienorientierung für Schülerinnen und Schüler in Deutschland**
 
-StudyMatch AI unterstützt Schülerinnen und Schüler dabei, erste Studienideen zu entdecken, die zu
-ihren Interessen, Stärken und persönlichen Präferenzen passen könnten. Der Prototyp verbindet eine
-hochwertige, responsive Oberfläche mit einem nachvollziehbaren Matching-Algorithmus.
+StudyMatch AI ist eine statische EdTech-Plattform, die erste Studienideen aus Interessen,
+Stärken und persönlichen Präferenzen ableitet. Die Anwendung funktioniert ohne Registrierung,
+Tracking oder externe Datenbank und bleibt vollständig für GitHub Pages geeignet.
 
-> **Wichtig:** Die Studiengänge und Regionen in dieser Version sind ausdrücklich Beispieldaten.
-> Sie sind keine offiziellen Hochschulangebote, keine Zulassungsberatung und kein Versprechen für
-> einen Studienplatz.
+> **Transparenz:** Alle Studiengänge, Inhalte und Regionen sind klar gekennzeichnete Demo-Profile.
+> Sie sind keine offiziellen Hochschulangebote, keine Zulassungsberatung und keine wissenschaftlich
+> validierte Prognose.
 
-## Live-Demo
+## Demo
 
-Die für GitHub Pages vorgesehene URL lautet:
+[GitHub-Pages-Demo öffnen](https://ensar2222b.github.io/Studymatch-ai/)
 
-**[ensar2222b.github.io/Studymatch-ai](https://ensar2222b.github.io/Studymatch-ai/)**
-
-Die Demo ist verfügbar, sobald der v1.1-Pull-Request gemerged und GitHub Pages für den Branch
-`main` mit dem Ordner `/ (root)` aktiviert wurde.
-
-## Vorschau
-
-Desktop:
-
-![StudyMatch AI Desktop-Vorschau](assets/studymatch-v1.1-desktop.png)
-
-Mobil:
-
-![StudyMatch AI Mobile-Vorschau](assets/studymatch-v1.1-mobile.png)
+Die Demo ist verfügbar, sobald der v1.2-Pull-Request gemerged und GitHub Pages für `main` mit
+`/ (root)` aktiviert wurde.
 
 ## Funktionen
 
-| Bereich | Enthalten |
+| Bereich | Beschreibung |
 | --- | --- |
-| Landingpage | Hero-Bereich, Navigation, Markenstil und klare Call-to-Actions |
-| Studienfinder | Sieben Fragen zu Interessen, Stärken, Arbeitsweise, Lernstil, Mathe/Programmierung, Region und Studienform |
-| Ergebnisse | Sortierte Studienideen, Score, Begründung, Berufsfelder und passende Antwortbereiche |
-| Vergleich | Beliebig viele ausgewählte Studienideen in einer übersichtlichen Tabelle vergleichen |
-| Responsive UI | Für Smartphone, Tablet und Desktop optimierte Layouts |
-| Transparenz | Beispieldaten-Hinweise und Erklärung des Score-Modells |
-| AI Advisor Konzept | Sicherheits- und Architekturkonzept für eine spätere Backend-Integration |
+| Premium UI | Light-/Dark-Mode, Systempräferenz, mobile Navigation, responsive Karten und dezente Animationen |
+| Studienfinder | 11 verständliche Fragen zu Interessen, Fächern, Stärken, Kreativität, Analyse, Berufszielen, Arbeitsumgebung, Mathe, Programmierung, Studienform und Region |
+| Fortschritt | Antworten und aktueller Schritt werden lokal gespeichert und können fortgesetzt werden |
+| Dashboard | Persönliche Zusammenfassung, Top-Matches, Score, Übereinstimmungen, Herausforderungen und Berufsfelder |
+| Explorer | Suche, Fachbereich-, Regionen- und Studienformfilter, Sortierung und Detailansichten |
+| Favoriten | Demo-Profile lokal speichern und wieder entfernen |
+| Vergleich | Bis zu drei Studiengänge auf einer responsiven Tabelle vergleichen |
+| Advisor-Konzept | Sichere Architektur für eine spätere Backend-Anbindung, ohne echte KI in v1.2 |
 
-## Verwendete Technologien
+## Vorschau
 
-- Semantisches HTML5
-- Modernes CSS mit responsiven Breakpoints, Design Tokens und `prefers-reduced-motion`
-- Vanilla JavaScript (ES6+)
-- Google Fonts: DM Sans und Space Grotesk
-- Keine Frameworks, kein Build-Schritt und keine kostenpflichtigen Dienste
+![StudyMatch AI Desktop](assets/studymatch-v1.1-desktop.png)
 
-## Lokal ausführen
+![StudyMatch AI Mobile](assets/studymatch-v1.2-mobile.png)
+
+Die Screenshots dokumentieren die responsive Designrichtung; die interaktiven Funktionen sind im
+lokalen Browser testbar.
+
+## Technologien und Architektur
+
+- Semantisches HTML5, CSS Custom Properties und Vanilla JavaScript
+- Keine Frameworks, kein Build-Schritt, keine kostenpflichtigen Dienste
+- `index.html` als Einstiegspunkt im Repository-Root
+- `app.js` enthält Fragen, Demo-Profile, UI-Zustände, Matching, Explorer und lokale Persistenz
+- `styles.css` enthält Design Tokens, Light-/Dark-Theme, Komponenten und responsive Breakpoints
+- `localStorage` speichert ausschließlich Quiz-Fortschritt, Antworten, Favoriten und Theme-Auswahl
+
+## Lokal entwickeln
 
 ```bash
 git clone https://github.com/ensar2222b/Studymatch-ai.git
@@ -57,110 +56,84 @@ cd Studymatch-ai
 python3 -m http.server 8080
 ```
 
-Danach im Browser [http://localhost:8080](http://localhost:8080) öffnen. Für eine schnelle
-Syntaxprüfung:
+Danach [http://localhost:8080](http://localhost:8080) öffnen. Für Syntax- und Diff-Prüfungen:
 
 ```bash
 node --check app.js
+git diff --check
 ```
 
 ## Matching-Algorithmus
 
-Der Finder vergleicht die ausgewählte Antwort mit den Merkmalen jedes Studienprofils. Jede Dimension
-hat ein Gewicht; die Summe passender Gewichte wird auf einen Prozentwert normiert:
+Jede Antwort wird mit Merkmalen des jeweiligen Demo-Profils verglichen. Interessen, Stärken und
+Berufsziel erhalten höhere Gewichte; Region und Studienform sind optionale Präferenzen. Antworten
+wie „Ich bin mir unsicher“ werden nicht negativ bewertet und aus dem Nenner des Scores
+ausgenommen. Der Score ist eine normalisierte Ähnlichkeitsanzeige innerhalb der Demo-Profile.
 
 | Dimension | Gewicht |
 | --- | ---: |
 | Interessen | 2,0 |
+| Schulfächer | 1,5 |
 | Stärken | 2,0 |
-| Arbeitsweise | 2,0 |
-| Lernstil | 1,5 |
-| Mathe/Programmierung | 1,5 |
-| Region | 1,0 |
+| Kreativität | 1,5 |
+| Analytisches Denken | 1,5 |
+| Berufsziel | 2,0 |
+| Arbeitsumgebung | 1,5 |
+| Mathematik | 1,0 |
+| Programmierung | 1,0 |
 | Studienform | 1,0 |
+| Region | 0,75 |
 
-Der Score ist damit eine nachvollziehbare Ähnlichkeitsanzeige innerhalb der Beispieldaten. Er ist
-keine wissenschaftliche Eignungsdiagnostik. Die Ergebnisbegründung erklärt die Rolle der
-Studienprofile; sie wird in dieser Version nicht von einer echten KI generiert.
+In v1.2 gibt es keine fachlichen Ausschlusskriterien, weil die Anwendung keine verbindlichen
+Studienvoraussetzungen kennt. Die Studienform wird als Präferenz und nicht als Zusage interpretiert.
+So entstehen keine unzulässigen Aussagen über Zulassung, NC oder Studienerfolg.
 
-## Datenschutz und lokale Datenspeicherung
+## Explorer-Daten und Einschränkungen
 
-- Der Prototyp sendet Antworten nicht an einen Server.
-- Antworten werden nur während der aktuellen Browser-Sitzung im JavaScript-Speicher gehalten.
-- Es werden keine Cookies, kein `localStorage` und keine Analyse- oder Werbe-Tracker verwendet.
-- Beim Neuladen oder Schließen der Seite gehen Antworten verloren.
-- Die eingebundenen Google Fonts stellen eine externe Verbindung zu Google her. Für einen
-  vollständig selbstständigen Betrieb können die Schriftdateien später lokal eingebunden werden.
-- Eine spätere KI-Anbindung muss Datenminimierung, Einwilligung, Löschkonzept, Transportverschlüsselung
-  und serverseitige Geheimnisverwaltung berücksichtigen.
+Die sechs Profile in `app.js` sind redaktionelle Demodaten. Sie enthalten keine konkreten
+Hochschulen, NC-Werte, Gehälter, Zulassungsvoraussetzungen oder offiziellen Links. Typische Inhalte
+und Berufsfelder sind als allgemeine Orientierung formuliert und müssen vor einer echten
+Studienentscheidung mit offiziellen Hochschulquellen geprüft werden.
+
+## Datenschutz
+
+- Antworten verlassen den Browser nicht.
+- Es werden keine Cookies, Tracker, Analyse-Skripte oder Konten verwendet.
+- `localStorage` enthält nur den aktuellen Quiz-Fortschritt, Favoriten und Theme-Auswahl.
+- Daten können über „Neu starten“ gelöscht werden; Browserdaten lassen sich zusätzlich über die
+  Browser-Einstellungen entfernen.
+- Google Fonts werden aktuell extern geladen. Für einen vollständig selbstständigen Betrieb können
+  die Schriftdateien lokal eingebunden werden.
 
 ## StudyMatch AI Advisor
 
-Der spätere Advisor soll Rückfragen zu Studienideen beantworten und Empfehlungen erklären. Er wird
-nicht direkt aus dem Browser mit einem KI-Anbieter sprechen.
+Der spätere Advisor soll Rückfragen stellen, Studiengänge erklären und Alternativen begründen.
+Die aktuelle Anwendung enthält keine echte KI-Funktion. Die sichere Zielarchitektur ist:
 
 ```text
-Browser
-  │  HTTPS + validierter Request
-  ▼
-Eigener Backend-Endpunkt
-  ├─ Authentifizierung / Rate Limit / Eingabevalidierung
-  ├─ Datenminimierung und Protokollierungsregeln
-  ├─ Kuratierter Studienprofil-Kontext
-  └─ Anbieteradapter mit serverseitigem API-Schlüssel
-       ▼
-   KI-Modell oder austauschbarer lokaler Dienst
+Browser → eigener HTTPS-Backend-Endpunkt → Validierung / Rate Limit / Datenminimierung
+        → kuratierter Profil-Kontext → serverseitiger Anbieteradapter → KI-Dienst
 ```
 
-Geplante Sicherheitsregeln:
-
-1. API-Schlüssel ausschließlich in serverseitigen Secrets oder einer Secret-Management-Lösung.
-2. Keine personenbezogenen Antworten dauerhaft speichern, sofern es nicht ausdrücklich erforderlich
-   und transparent erklärt ist.
-3. Antworten mit Quellen, Unsicherheiten und dem Hinweis auf eigene Recherche ausgeben.
-4. Eingaben und Ausgaben validieren, missbräuchliche Nutzung begrenzen und Kostenlimits setzen.
-5. Anbieteradapter so kapseln, dass der statische Prototyp ohne KI weiterhin funktioniert.
-
-## Projektstruktur
-
-```text
-.
-├── index.html
-├── styles.css
-├── app.js
-├── AGENTS.md
-├── README.md
-└── .github/
-    └── copilot-instructions.md
-```
+API-Schlüssel bleiben ausschließlich serverseitig. Antworten sollen Unsicherheiten und Quellen
+sichtbar machen; personenbezogene Daten werden minimiert und nicht standardmäßig dauerhaft
+gespeichert. Der statische Finder muss auch ohne diesen Dienst vollständig funktionieren.
 
 ## GitHub Pages
 
-`index.html` liegt direkt im Repository-Root. Für die Veröffentlichung:
+1. Pull Request gegen `main` prüfen und mergen.
+2. **Settings → Pages → Deploy from a branch** öffnen.
+3. Branch `main` und Ordner `/ (root)` auswählen.
+4. `https://ensar2222b.github.io/Studymatch-ai/` öffnen.
 
-1. Repository auf GitHub öffnen.
-2. **Settings → Pages** auswählen.
-3. **Deploy from a branch** wählen.
-4. Branch `main` und Ordner `/ (root)` speichern.
+## Roadmap für v1.3
 
-## Einschränkungen
-
-- Die Profildaten sind klein und redaktionell beispielhaft.
-- Es gibt keine offizielle Hochschul-, Studiengangs- oder Zulassungsdatenbank.
-- Der Algorithmus berücksichtigt keine Noten, Fristen, Kosten, Barrierefreiheit oder individuellen
-  Lebenssituationen.
-- Der Score ersetzt keine Studienberatung und keine Prüfung aktueller Hochschulinformationen.
-
-## Roadmap
-
-- Verifizierte, versionierte Studiengangsdaten mit Quellen und Aktualisierungsprozess
-- Filter für Abschlussart, Zulassung, Kosten, Barrierefreiheit und Studienort
-- Ausführlichere Ergebniserklärung und gespeicherter Vergleich auf Wunsch der Nutzerinnen und Nutzer
-- Automatisierte Browser- und Accessibility-Tests
-- Sicheres Backend für den **StudyMatch AI Advisor**
-- Mehrsprachige Inhalte und barrierearme, lokal eingebundene Schriftarten
+- Verifizierte Studiengangsprofile mit Quellen, Aktualisierungsdatum und offiziellen Links
+- Lokale Schriftdateien und automatisierte Accessibility-Tests
+- Detailseiten mit echten, redaktionell geprüften Daten
+- Sichere Backend-Schnittstelle für den StudyMatch AI Advisor
+- Export eines persönlichen Vergleichs als datenschutzfreundliches Dokument
 
 ## Lizenz
 
-Für den Prototyp ist derzeit keine separate Open-Source-Lizenz festgelegt. Vor einer öffentlichen
-Weiterverwendung sollte eine passende Lizenz ergänzt werden.
+Für den Prototyp ist derzeit keine separate Open-Source-Lizenz festgelegt.

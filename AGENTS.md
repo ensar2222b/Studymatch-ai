@@ -11,6 +11,9 @@ Hochschulangebote, Zulassungsaussagen oder Studienplatzversprechen dargestellt w
 - Verwende plain HTML, CSS und JavaScript ohne Build-Schritt und ohne unnötige Abhängigkeiten.
 - `index.html` bleibt der GitHub-Pages-Einstiegspunkt im Repository-Root.
 - Daten und Matching-Logik liegen aktuell in `app.js`; halte Profil- und Fragedaten strukturiert.
+- `tests/matching.test.mjs` prüft die zentralen Score-Verträge; bei Gewichtsänderungen aktualisieren.
+- Der Vergleich darf höchstens drei Profile gleichzeitig anzeigen.
+- Quiz-Fortschritt, Favoriten und Theme werden ausschließlich über die dokumentierten `localStorage`-Schlüssel gespeichert.
 - API-Schlüssel, personenbezogene Daten und externe KI-Aufrufe gehören nicht in das Frontend.
 
 ## Qualitätsregeln
@@ -20,11 +23,13 @@ Hochschulangebote, Zulassungsaussagen oder Studienplatzversprechen dargestellt w
   sinnvolle semantische HTML-Elemente.
 - Neue Matching-Regeln müssen nachvollziehbar sein und in der README erklärt werden.
 - Keine erfundenen Hochschulen, Studienordnungen, Zulassungsvoraussetzungen oder offiziellen Links.
+- „Unsicher“-Antworten dürfen den Score nicht negativ verzerren.
 - Bestehende Änderungen anderer Personen niemals zurücksetzen; nur den eigenen Scope bearbeiten.
 
 ## Vor dem Pull Request
 
 1. `node --check app.js` ausführen.
-2. Einen lokalen Server mit `python3 -m http.server 8080` starten und die Startseite öffnen.
-3. Fragebogen, Zurück-Navigation, Ergebnisse, Vergleich und Neustart manuell prüfen.
-4. README, Datenschutz-Hinweise und Demo-Link bei Verhaltensänderungen aktualisieren.
+2. `node --test tests/matching.test.mjs` ausführen.
+3. Einen lokalen Server mit `python3 -m http.server 8080` starten und die Startseite öffnen.
+4. Fragebogen, Zurück-Navigation, Ergebnisse, Explorer, Favoriten, Vergleich und Neustart manuell prüfen.
+5. README, Datenschutz-Hinweise und Demo-Link bei Verhaltensänderungen aktualisieren.
