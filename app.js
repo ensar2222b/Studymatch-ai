@@ -1,273 +1,66 @@
+const STORAGE = { answers: "studymatch-answers-v12", step: "studymatch-step-v12", favorites: "studymatch-favorites-v12", theme: "studymatch-theme-v12" };
 const questions = [
-  {
-    key: "subjects",
-    title: "Welche Themen ziehen dich an?",
-    hint: "Wähle die Antwort, die am besten zu dir passt.",
-    options: [
-      ["tech", "Technik & Informatik", "Digitale Welten, Systeme und Innovation"],
-      ["people", "Menschen & Gesellschaft", "Psychologie, Bildung und Zusammenleben"],
-      ["creative", "Kreativität & Medien", "Design, Sprache und Geschichten"],
-      ["nature", "Natur & Umwelt", "Biologie, Nachhaltigkeit und Forschung"],
-    ],
-  },
-  {
-    key: "strength",
-    title: "Was ist eine deiner Stärken?",
-    hint: "Es gibt keine falsche Antwort – was fühlt sich nach dir an?",
-    options: [
-      ["analytical", "Analytisch denken", "Ich erkenne Muster und löse gern Probleme"],
-      ["empathy", "Gut zuhören", "Ich verstehe Menschen und kann sie unterstützen"],
-      ["ideas", "Ideen entwickeln", "Ich denke gern neu und probiere Dinge aus"],
-      ["organize", "Organisieren", "Ich bringe Struktur in komplexe Aufgaben"],
-    ],
-  },
-  {
-    key: "work",
-    title: "Wie möchtest du später arbeiten?",
-    hint: "Stell dir deinen idealen Arbeitsalltag vor.",
-    options: [
-      ["build", "Dinge gestalten", "Etwas entwickeln, bauen oder sichtbar machen"],
-      ["help", "Menschen begleiten", "Beraten, lehren oder gemeinsam wachsen"],
-      ["research", "Zusammenhänge erforschen", "Fragen stellen und Wissen vertiefen"],
-      ["business", "Projekte bewegen", "Teams, Ideen und Ziele zusammenbringen"],
-    ],
-  },
-  {
-    key: "learning",
-    title: "Wie lernst du am liebsten?",
-    hint: "Wähle die Lernumgebung, in der du aufblühst.",
-    options: [
-      ["theory", "Theoretisch", "Ich tauche gern tief in Konzepte ein"],
-      ["practice", "Praktisch", "Ich lerne am besten durch Ausprobieren"],
-      ["creative", "Kreativ", "Ich möchte eigene Ideen umsetzen"],
-      ["team", "Im Team", "Austausch bringt mich weiter"],
-    ],
-  },
-  {
-    key: "math",
-    title: "Wie viel Mathe oder Programmierung darf es sein?",
-    hint: "Deine persönliche Komfortzone ist ein guter Ausgangspunkt.",
-    options: [
-      ["high", "Gern viel davon", "Zahlen, Logik und Code machen mir Spaß"],
-      ["medium", "Eine gute Mischung", "Etwas davon ist okay, aber nicht alles"],
-      ["low", "Eher wenig", "Ich möchte mich auf andere Themen konzentrieren"],
-    ],
-  },
-  {
-    key: "region",
-    title: "Welche Studienregion passt zu dir?",
-    hint: "Wähle die Richtung, die du aktuell bevorzugst.",
-    options: [
-      ["north", "Norden", "Zum Beispiel Hamburg, Bremen oder Schleswig-Holstein"],
-      ["west", "Westen", "Zum Beispiel Nordrhein-Westfalen oder Rheinland-Pfalz"],
-      ["south", "Süden", "Zum Beispiel Bayern oder Baden-Württemberg"],
-      ["east", "Osten oder offen", "Zum Beispiel Berlin, Sachsen oder flexibel"],
-    ],
-  },
-  {
-    key: "mode",
-    title: "Welche Studienform interessiert dich?",
-    hint: "Du kannst dich später immer noch neu entscheiden.",
-    options: [
-      ["dual", "Duales Studium", "Theorie und Berufspraxis verbinden"],
-      ["classic", "Klassisches Studium", "Intensiv in ein Fachgebiet eintauchen"],
-      ["flexible", "Noch offen", "Erst einmal verschiedene Wege kennenlernen"],
-    ],
-  },
+  { key: "interest", title: "Welche Themen interessieren dich?", options: [["tech","Technik & Informatik","Digitale Welten, Systeme und Innovation"],["people","Menschen & Gesellschaft","Psychologie, Bildung und Zusammenleben"],["creative","Kreativität & Medien","Design, Sprache und Geschichten"],["nature","Natur & Umwelt","Biologie, Nachhaltigkeit und Forschung"],["unsure","Ich bin mir unsicher","Ich möchte erst verschiedene Bereiche entdecken"]] },
+  { key: "subjects", title: "Welche Schulfächer machen dir am meisten Spaß?", options: [["math","Mathematik & Physik","Logik, Zahlen und Experimente"],["languages","Sprachen & Geschichte","Kommunikation, Kultur und Zusammenhänge"],["arts","Kunst & Musik","Ausdruck, Gestaltung und Kreativität"],["biology","Biologie & Chemie","Leben, Stoffe und Forschung"],["unsure","Ich bin mir unsicher","Meine Interessen sind noch offen"]] },
+  { key: "strength", title: "Welche Stärke beschreibt dich am besten?", options: [["analytical","Analytisch denken","Ich erkenne Muster und löse Probleme"],["empathy","Gut zuhören","Ich verstehe Menschen und kann sie unterstützen"],["ideas","Ideen entwickeln","Ich denke gern neu und probiere Dinge aus"],["organize","Organisieren","Ich bringe Struktur in komplexe Aufgaben"],["unsure","Ich bin mir unsicher","Ich entdecke meine Stärken noch"]] },
+  { key: "creativity", title: "Wie wichtig ist dir Kreativität?", options: [["high","Sehr wichtig","Ich möchte eigene Ideen sichtbar machen"],["medium","Eine gute Mischung","Kreativität darf neben anderen Themen vorkommen"],["low","Eher nebensächlich","Ich arbeite lieber mit klaren Strukturen"],["unsure","Ich bin mir unsicher","Das möchte ich ausprobieren"]] },
+  { key: "analysis", title: "Wie gerne arbeitest du analytisch?", options: [["high","Sehr gerne","Ich untersuche Zusammenhänge und Daten"],["medium","Kommt darauf an","Eine Mischung aus Denken und Machen passt zu mir"],["low","Eher wenig","Ich möchte mich stärker auf Menschen oder Gestaltung konzentrieren"],["unsure","Ich bin mir unsicher","Ich kenne meine Präferenz noch nicht"]] },
+  { key: "career", title: "Welche berufliche Richtung klingt spannend?", options: [["build","Produkte entwickeln","Etwas Neues bauen, gestalten oder programmieren"],["help","Menschen begleiten","Beraten, lehren oder unterstützen"],["research","Forschen & verstehen","Fragen stellen und Wissen vertiefen"],["business","Projekte bewegen","Teams, Ideen und Ziele zusammenbringen"],["unsure","Ich bin mir unsicher","Ich möchte verschiedene Wege kennenlernen"]] },
+  { key: "environment", title: "In welcher Arbeitsumgebung fühlst du dich wohl?", options: [["team","Im Team","Austausch und gemeinsames Arbeiten"],["independent","Selbstständig","Ruhe, Verantwortung und eigene Entscheidungen"],["practical","Praktisch","Werkstatt, Labor oder direkte Anwendung"],["flexible","Flexibel","Abwechslung und unterschiedliche Aufgaben"],["unsure","Ich bin mir unsicher","Ich möchte verschiedene Umgebungen erleben"]] },
+  { key: "math", title: "Wie viel Mathematik darf im Studium vorkommen?", options: [["high","Gern viel","Zahlen, Logik und Formeln machen mir Spaß"],["medium","Eine gute Mischung","Etwas Mathematik ist in Ordnung"],["low","Eher wenig","Ich möchte andere Themen in den Mittelpunkt stellen"],["unsure","Ich bin mir unsicher","Das möchte ich erst kennenlernen"]] },
+  { key: "programming", title: "Wie interessiert bist du an Programmierung?", options: [["high","Sehr interessiert","Ich möchte Code schreiben und Systeme verstehen"],["medium","Neugierig","Ich probiere es gern aus, aber nicht ausschließlich"],["low","Eher wenig","Programmierung soll keine Hauptrolle spielen"],["unsure","Ich bin mir unsicher","Ich habe bisher wenig Erfahrung"]] },
+  { key: "mode", title: "Welche Studienform passt zu deinen Plänen?", options: [["dual","Duales Studium","Theorie und Berufspraxis verbinden"],["classic","Klassisches Studium","Intensiv in ein Fachgebiet eintauchen"],["flexible","Noch offen","Erst verschiedene Wege kennenlernen"],["unsure","Ich bin mir unsicher","Ich brauche mehr Informationen"]] },
+  { key: "region", title: "Welche Studienregion bevorzugst du?", options: [["north","Norden","Zum Beispiel Hamburg, Bremen oder Schleswig-Holstein"],["west","Westen","Zum Beispiel NRW oder Rheinland-Pfalz"],["south","Süden","Zum Beispiel Bayern oder Baden-Württemberg"],["east","Osten","Zum Beispiel Berlin, Sachsen oder Thüringen"],["unsure","Ich bin mir unsicher","Der Ort ist noch offen"]] },
 ];
 
-const studyProfiles = [
-  {
-    id: "medieninformatik",
-    name: "Medieninformatik",
-    description: "Die Verbindung aus digitalen Technologien, Gestaltung und Nutzererlebnis.",
-    careers: ["UX / UI Design", "Webentwicklung", "Produktmanagement"],
-    reason: "Deine Neugier für digitale Themen trifft auf kreative und praktische Interessen.",
-    regions: ["north", "west", "south", "east"],
-    modes: ["classic", "flexible"],
-    facets: { subjects: ["tech", "creative"], strength: ["ideas"], work: ["build"], learning: ["practice", "creative"], math: ["medium"] },
-  },
-  {
-    id: "wirtschaftspsychologie",
-    name: "Wirtschaftspsychologie",
-    description: "Menschen, Organisationen und wirtschaftliche Zusammenhänge gemeinsam verstehen.",
-    careers: ["Personalentwicklung", "Marktforschung", "Beratung"],
-    reason: "Deine Stärke im Umgang mit Menschen passt zu Interesse an Organisation und Wirkung.",
-    regions: ["north", "west", "east"],
-    modes: ["classic", "flexible"],
-    facets: { subjects: ["people"], strength: ["empathy", "organize"], work: ["help", "business"], learning: ["team"], math: ["low", "medium"] },
-  },
-  {
-    id: "umweltwissenschaften",
-    name: "Umweltwissenschaften",
-    description: "Wissenschaftliche Perspektiven auf Klima, Ökosysteme und nachhaltige Lösungen.",
-    careers: ["Nachhaltigkeitsmanagement", "Umweltanalyse", "Forschung"],
-    reason: "Deine Verbindung zu Natur und Forschung kann hier in konkrete Lösungen einfließen.",
-    regions: ["north", "south", "east"],
-    modes: ["classic", "flexible"],
-    facets: { subjects: ["nature"], strength: ["analytical"], work: ["research"], learning: ["theory", "team"], math: ["medium"] },
-  },
-  {
-    id: "wirtschaftsinformatik",
-    name: "Wirtschaftsinformatik",
-    description: "Digitale Systeme, Geschäftsprozesse und die Menschen dazwischen.",
-    careers: ["IT-Projektmanagement", "Business Analyse", "Digital Consulting"],
-    reason: "Du kannst analytisches Denken mit dem Wunsch verbinden, Projekte zu bewegen.",
-    regions: ["west", "south", "east"],
-    modes: ["dual", "classic"],
-    facets: { subjects: ["tech"], strength: ["analytical", "organize"], work: ["business"], learning: ["practice", "team"], math: ["high", "medium"] },
-  },
+const programmes = [
+  { id: "medieninformatik", name: "Medieninformatik", field: "Technik & Informatik", description: "Digitale Technologien, Gestaltung und Nutzererlebnis verbinden.", contents: ["Programmierung", "UX / UI", "Digitale Medien"], careers: ["UX / UI Design", "Webentwicklung", "Produktmanagement"], states: ["Norden","Westen","Süden","Osten"], modes: ["classic"], tags: ["tech","creative","ideas","build","team","medium","medium","classic"], challenges: "Regelmäßiges logisches Denken und Programmieren gehören typischerweise dazu.", weights: { interest: 2, subjects: 1, strength: 1.5, creativity: 1.5, analysis: 1, career: 1.5, environment: 1, math: 1, programming: 1.5, mode: 1, region: .5 } },
+  { id: "wirtschaftsinformatik", name: "Wirtschaftsinformatik", field: "Wirtschaft & Gesellschaft", description: "Digitale Systeme, Geschäftsprozesse und Organisation verbinden.", contents: ["Daten & Systeme", "Betriebswirtschaft", "Projektmanagement"], careers: ["IT-Projektmanagement", "Business Analyse", "Digital Consulting"], states: ["Westen","Süden","Osten"], modes: ["dual","classic"], tags: ["tech","math","analytical","medium","medium","business","team","high","high","classic","west"], challenges: "Die Verbindung aus Wirtschaft, Logik und technischen Themen kann anspruchsvoll sein.", weights: { interest: 2, subjects: 1, strength: 1.5, creativity: .5, analysis: 1.5, career: 1.5, environment: 1, math: 1.5, programming: 1.5, mode: 1, region: .5 } },
+  { id: "wirtschaftspsychologie", name: "Wirtschaftspsychologie", field: "Wirtschaft & Gesellschaft", description: "Menschen, Organisationen und wirtschaftliche Zusammenhänge verstehen.", contents: ["Psychologie", "Marketing", "Organisation"], careers: ["Personalentwicklung", "Marktforschung", "Beratung"], states: ["Norden","Westen","Osten"], modes: ["classic"], tags: ["people","languages","empathy","medium","medium","help","team","low","low","classic","west"], challenges: "Interesse an wissenschaftlichen Texten und wirtschaftlichen Grundlagen hilft.", weights: { interest: 2, subjects: 1, strength: 1.5, creativity: 1, analysis: 1, career: 1.5, environment: 1, math: .5, programming: .5, mode: 1, region: .5 } },
+  { id: "umweltwissenschaften", name: "Umweltwissenschaften", field: "Natur & Umwelt", description: "Klima, Ökosysteme und nachhaltige Lösungen wissenschaftlich betrachten.", contents: ["Ökologie", "Datenanalyse", "Nachhaltigkeit"], careers: ["Nachhaltigkeitsmanagement", "Umweltanalyse", "Forschung"], states: ["Norden","Süden","Osten"], modes: ["classic"], tags: ["nature","biology","analytical","medium","high","research","practical","medium","medium","classic","south"], challenges: "Forschungsorientiertes Arbeiten und naturwissenschaftliche Grundlagen gehören dazu.", weights: { interest: 2, subjects: 1.5, strength: 1.5, creativity: .5, analysis: 1.5, career: 1.5, environment: 1, math: 1, programming: .5, mode: 1, region: .5 } },
+  { id: "kommunikationsdesign", name: "Kommunikationsdesign", field: "Kreativität & Medien", description: "Visuelle Konzepte, Medien und Marken für Menschen verständlich gestalten.", contents: ["Typografie", "Visual Design", "Medienkonzepte"], careers: ["Art Direction", "Brand Design", "Content Design"], states: ["Norden","Westen","Süden"], modes: ["classic"], tags: ["creative","arts","ideas","high","low","build","independent","low","low","classic","north"], challenges: "Eigenständige Projekte, Feedback und ein kontinuierlich wachsendes Portfolio sind wichtig.", weights: { interest: 2, subjects: 1.5, strength: 1.5, creativity: 2, analysis: .5, career: 1, environment: 1, math: .5, programming: .5, mode: 1, region: .5 } },
+  { id: "soziale-arbeit", name: "Soziale Arbeit", field: "Wirtschaft & Gesellschaft", description: "Menschen in unterschiedlichen Lebenssituationen begleiten und stärken.", contents: ["Sozialrecht", "Beratung", "Pädagogik"], careers: ["Sozialberatung", "Jugendarbeit", "Bildungsarbeit"], states: ["Norden","Westen","Süden","Osten"], modes: ["classic","dual"], tags: ["people","languages","empathy","medium","low","help","team","low","low","dual","unsure"], challenges: "Empathie, Reflexion und der Umgang mit emotional anspruchsvollen Situationen sind wichtig.", weights: { interest: 2, subjects: 1, strength: 2, creativity: .5, analysis: .5, career: 2, environment: 1.5, math: .5, programming: .5, mode: 1, region: .5 } },
 ];
-
-const questionWeights = { subjects: 2, strength: 2, work: 2, learning: 1.5, math: 1.5, region: 1, mode: 1 };
-let currentStep = 0;
-const answers = {};
+const weights = { interest: 2, subjects: 1.5, strength: 2, creativity: 1.5, analysis: 1.5, career: 2, environment: 1.5, math: 1, programming: 1, mode: 1, region: .75 };
+let step = Number(localStorage.getItem(STORAGE.step) || 0);
+let answers = readJson(STORAGE.answers, {});
+let favorites = new Set(readJson(STORAGE.favorites, []));
 let rankedResults = [];
 const comparisonSelection = new Set();
-const questionContainer = document.querySelector("#question-container");
-const nextButton = document.querySelector("#next-button");
-const backButton = document.querySelector("#back-button");
-const quizSection = document.querySelector(".finder-section");
-const resultsSection = document.querySelector("#results");
-const formError = document.querySelector("#form-error");
-
+const $ = (selector) => document.querySelector(selector);
+function readJson(key, fallback) { try { return JSON.parse(localStorage.getItem(key)) || fallback; } catch { return fallback; } }
+function saveState() { localStorage.setItem(STORAGE.answers, JSON.stringify(answers)); localStorage.setItem(STORAGE.step, String(step)); }
 function renderQuestion() {
-  const question = questions[currentStep];
-  document.querySelector("#current-step").textContent = currentStep + 1;
-  document.querySelector("#total-steps").textContent = questions.length;
-  document.querySelector("#quiz-progress").style.width = `${((currentStep + 1) / questions.length) * 100}%`;
-  backButton.hidden = currentStep === 0;
-  nextButton.innerHTML = currentStep === questions.length - 1 ? "Ergebnisse ansehen <span aria-hidden=\"true\">→</span>" : "Weiter <span aria-hidden=\"true\">→</span>";
-  formError.hidden = true;
-  questionContainer.innerHTML = `
-    <div class="question-kicker">Frage ${currentStep + 1}</div>
-    <h3 class="question-title">${question.title}</h3>
-    <p class="question-hint">${question.hint}</p>
-    <div class="option-grid">
-      ${question.options.map(([value, label, description]) => `
-        <label class="option ${answers[question.key] === value ? "selected" : ""}">
-          <input type="radio" name="${question.key}" value="${value}" ${answers[question.key] === value ? "checked" : ""}>
-          <strong>${label}</strong><small>${description}</small>
-        </label>
-      `).join("")}
-    </div>
-  `;
-  questionContainer.querySelectorAll(".option").forEach((option) => {
-    option.addEventListener("click", () => {
-      questionContainer.querySelectorAll(".option").forEach((item) => item.classList.remove("selected"));
-      option.classList.add("selected");
-      answers[question.key] = option.querySelector("input").value;
-      formError.hidden = true;
-    });
-  });
+  const question = questions[step]; $("#current-step").textContent = step + 1; $("#total-steps").textContent = questions.length; $("#quiz-progress").style.width = `${((step + 1) / questions.length) * 100}%`; $("#back-button").hidden = step === 0; $("#next-button").innerHTML = step === questions.length - 1 ? "Auswertung ansehen <span aria-hidden=\"true\">→</span>" : "Weiter <span aria-hidden=\"true\">→</span>"; $("#form-error").hidden = true;
+  $("#question-container").innerHTML = `<div class="question-kicker">Frage ${step + 1} von ${questions.length}</div><h3 class="question-title">${question.title}</h3><p class="question-hint">Wähle die Antwort, die sich aktuell am ehesten nach dir anfühlt.</p><div class="option-grid">${question.options.map(([value, label, description]) => `<label class="option ${answers[question.key] === value ? "selected" : ""}"><input type="radio" name="${question.key}" value="${value}" ${answers[question.key] === value ? "checked" : ""}><strong>${label}</strong><small>${description}</small></label>`).join("")}</div>`;
+  $("#question-container").querySelectorAll(".option").forEach((option) => option.addEventListener("click", () => { $("#question-container").querySelectorAll(".option").forEach((item) => item.classList.remove("selected")); option.classList.add("selected"); answers[question.key] = option.querySelector("input").value; saveState(); $("#form-error").hidden = true; }));
 }
-
-function scoreProfile(profile) {
-  const maxScore = Object.values(questionWeights).reduce((sum, weight) => sum + weight, 0);
-  let score = 0;
-  const matchedDimensions = [];
-  Object.entries(questionWeights).forEach(([key, weight]) => {
-    if (key === "region" && profile.regions.includes(answers[key])) {
-      score += weight;
-      matchedDimensions.push(key);
-    } else if (key === "mode" && profile.modes.includes(answers[key])) {
-      score += weight;
-      matchedDimensions.push(key);
-    } else if (profile.facets[key]?.includes(answers[key])) {
-      score += weight;
-      matchedDimensions.push(key);
-    }
-  });
-  return { ...profile, score: Math.round((score / maxScore) * 100), matchedDimensions };
+function scoreProgramme(programme) {
+  let earned = 0; let possible = 0; const matches = []; const uncertainties = [];
+  Object.entries(weights).forEach(([key, weight]) => { const answer = answers[key]; if (!answer || answer === "unsure") { uncertainties.push(key); return; } possible += weight; const profile = programme.weights[key]; const matching = programme.tags.includes(answer) || (key === "region" && programme.states.includes(regionLabel(answer))) || (key === "mode" && programme.modes.includes(answer)); if (matching) { earned += weight; matches.push(key); } });
+  return { ...programme, score: possible ? Math.round((earned / possible) * 100) : 0, matches, uncertainties };
 }
-
+function regionLabel(value) { return ({ north: "Norden", west: "Westen", south: "Süden", east: "Osten" })[value] || value; }
+function labelFor(key) { return ({ interest: "Interessen", subjects: "Schulfächer", strength: "Stärken", creativity: "Kreativität", analysis: "analytisches Denken", career: "Berufsziel", environment: "Arbeitsumgebung", math: "Mathematik", programming: "Programmierung", mode: "Studienform", region: "Region" })[key] || key; }
 function renderResults() {
-  rankedResults = studyProfiles.map(scoreProfile).sort((a, b) => b.score - a.score);
-  document.querySelector("#result-count").textContent = rankedResults.length;
-  document.querySelector("#results-list").innerHTML = rankedResults.map((result) => `
-    <article class="result-card">
-      <div class="result-top">
-        <div><div class="eyebrow">Studienidee</div><h3>${result.name}</h3></div>
-        <div class="result-score">${result.score}%<small>Übereinstimmung</small></div>
-      </div>
-      <p>${result.description}</p>
-      <div class="result-reason"><strong>Warum das passen könnte:</strong> ${result.reason}</div>
-      <div class="career-tags">${result.careers.map((career) => `<span>${career}</span>`).join("")}</div>
-      <div class="result-actions">
-        <label><input type="checkbox" class="compare-checkbox" value="${result.id}" aria-label="${result.name} zum Vergleich auswählen"> Für Vergleich auswählen</label>
-        <span class="eyebrow">${result.matchedDimensions.length} passende Bereiche</span>
-      </div>
-    </article>
-  `).join("");
-  document.querySelectorAll(".compare-checkbox").forEach((checkbox) => {
-    checkbox.checked = comparisonSelection.has(checkbox.value);
-    checkbox.addEventListener("change", () => {
-      if (checkbox.checked) comparisonSelection.add(checkbox.value);
-      else comparisonSelection.delete(checkbox.value);
-      updateCompareButton();
-    });
-  });
-  updateCompareButton();
+  rankedResults = programmes.map(scoreProgramme).sort((a, b) => b.score - a.score); const top = rankedResults[0]; const chosen = Object.entries(answers).filter(([, value]) => value && value !== "unsure").map(([key, value]) => `${labelFor(key)}: ${value}`).slice(0, 3);
+  $("#result-count").textContent = rankedResults.length; $("#results-summary").textContent = top ? `Dein stärkster Startpunkt ist ${top.name} mit ${top.score}% Übereinstimmung innerhalb der Demodaten.` : "Deine Antworten ergeben ein erstes Profil."; $("#profile-summary").textContent = chosen.length ? chosen.join(" · ") : "Du bist noch offen – das ist ein guter Ausgangspunkt."; $("#strength-summary").textContent = [answers.strength, answers.creativity, answers.analysis].filter((value) => value && value !== "unsure").map((value) => value === "high" ? "hohe Ausprägung" : value).join(" · ") || "Noch keine klare Tendenz"; $("#challenge-summary").textContent = top?.challenges || "Vergleiche mehrere Ideen und recherchiere die Inhalte.";
+  $("#results-list").innerHTML = rankedResults.map((result) => `<article class="result-card"><div class="result-top"><div><div class="eyebrow">Studienidee</div><h3>${result.name}</h3></div><div class="result-score">${result.score}%<small>Match</small></div></div><p>${result.description}</p><div class="result-reason"><strong>Warum das passen könnte:</strong> ${result.matches.length ? `Deine Antworten passen bei ${result.matches.slice(0, 3).map(labelFor).join(", ")}.` : "Dieses Profil ist ein weiterer Ausgangspunkt für deine Recherche."}</div><div class="career-tags">${result.careers.map((career) => `<span>${career}</span>`).join("")}</div><p class="challenge-note"><strong>Mögliche Herausforderung:</strong> ${result.challenges}</p><div class="result-actions"><label><input type="checkbox" class="compare-checkbox" value="${result.id}" ${comparisonSelection.has(result.id) ? "checked" : ""}> Vergleichen</label><span class="eyebrow">${result.contents.length} Inhaltsbereiche</span></div></article>`).join("");
+  $("#results-list").querySelectorAll(".compare-checkbox").forEach((box) => box.addEventListener("change", () => { if (box.checked && comparisonSelection.size < 3) comparisonSelection.add(box.value); else if (!box.checked) comparisonSelection.delete(box.value); else box.checked = false; updateCompareButton(); })); updateCompareButton();
 }
-
-function updateCompareButton() {
-  const compareButton = document.querySelector("#compare-button");
-  compareButton.disabled = comparisonSelection.size < 2;
-  compareButton.innerHTML = comparisonSelection.size < 2
-    ? "Mindestens 2 auswählen"
-    : `Vergleich öffnen (${comparisonSelection.size}) <span aria-hidden="true">→</span>`;
+function updateCompareButton() { const button = $("#compare-button"); button.disabled = comparisonSelection.size < 2; button.textContent = comparisonSelection.size < 2 ? "Mindestens 2 auswählen" : `Vergleich öffnen (${comparisonSelection.size}/3)`; }
+function renderComparison() { const selected = rankedResults.filter((item) => comparisonSelection.has(item.id)); if (selected.length < 2) return; $("#comparison-head").innerHTML = `<tr><th>Merkmal</th>${selected.map((item) => `<th>${item.name}</th>`).join("")}</tr>`; const rows = [["Match-Score", ...selected.map((item) => `<strong>${item.score}%</strong>`)],["Fachbereich", ...selected.map((item) => item.field)],["Studieninhalte", ...selected.map((item) => item.contents.join(", "))],["Berufsfelder", ...selected.map((item) => item.careers.join(", "))],["Studienform", ...selected.map((item) => item.modes.join(", "))],["Herausforderung", ...selected.map((item) => item.challenges)]]; $("#comparison-body").innerHTML = rows.map(([label, ...values]) => `<tr><td>${label}</td>${values.map((value) => `<td>${value}</td>`).join("")}</tr>`).join(""); $("#comparison-panel").hidden = false; $("#comparison-panel").scrollIntoView({ behavior: "smooth" }); }
+function startFinder() { $(".finder-section").style.display = "block"; $("#results").hidden = true; renderQuestion(); $(".finder-section").scrollIntoView({ behavior: "smooth" }); }
+function showResults() { renderResults(); $(".finder-section").style.display = "none"; $("#results").hidden = false; $("#results").scrollIntoView({ behavior: "smooth" }); }
+function renderExplorer() {
+  const search = $("#explorer-search").value.toLowerCase(); const field = $("#field-filter").value; const state = $("#state-filter").value; const mode = $("#mode-filter").value; const sort = $("#sort-select").value;
+  const filtered = programmes.filter((item) => (!search || `${item.name} ${item.description}`.toLowerCase().includes(search)) && (!field || item.field === field) && (!state || item.states.includes(state)) && (!mode || item.modes.includes(mode))).sort((a, b) => a[sort].localeCompare(b[sort]));
+  $("#explorer-empty").hidden = filtered.length > 0; $("#explorer-grid").innerHTML = filtered.map((item) => `<article class="explorer-card"><header><div><div class="eyebrow">${item.field}</div><h3>${item.name}</h3></div><button class="favorite-button ${favorites.has(item.id) ? "active" : ""}" data-favorite="${item.id}" aria-label="${favorites.has(item.id) ? "Aus Favoriten entfernen" : "Als Favorit speichern"}">${favorites.has(item.id) ? "♥" : "♡"}</button></header><p>${item.description}</p><div class="card-meta"><span>${item.contents[0]}</span><span>${item.modes.includes("dual") ? "Dual möglich" : "Klassisch"}</span><span>Demoprofil</span></div><footer><button class="text-link detail-button" data-detail="${item.id}">Details ansehen ↗</button><span class="eyebrow">${item.states.join(" · ")}</span></footer></article>`).join("");
+  $("#favorite-count").textContent = favorites.size; $("#explorer-grid").querySelectorAll("[data-favorite]").forEach((button) => button.addEventListener("click", () => { const id = button.dataset.favorite; if (favorites.has(id)) favorites.delete(id); else favorites.add(id); localStorage.setItem(STORAGE.favorites, JSON.stringify([...favorites])); renderExplorer(); })); $("#explorer-grid").querySelectorAll("[data-detail]").forEach((button) => button.addEventListener("click", () => openDetail(button.dataset.detail)));
 }
-
-function renderComparison() {
-  const selected = rankedResults.filter((result) => comparisonSelection.has(result.id));
-  if (selected.length < 2) return;
-  document.querySelector("#comparison-head").innerHTML = `<tr><th>Merkmal</th>${selected.map((result) => `<th>${result.name}</th>`).join("")}</tr>`;
-  const rows = [
-    ["Übereinstimmung", ...selected.map((result) => `<strong>${result.score}%</strong>`)],
-    ["Beschreibung", ...selected.map((result) => result.description)],
-    ["Berufsfelder", ...selected.map((result) => result.careers.join(", "))],
-    ["Studienform", ...selected.map((result) => result.modes.map((mode) => mode === "dual" ? "dual" : mode === "classic" ? "klassisch" : "offen").join(", "))],
-    ["Beispielregionen", ...selected.map((result) => result.regions.map((region) => region === "north" ? "Norden" : region === "west" ? "Westen" : region === "south" ? "Süden" : "Osten").join(", "))],
-  ];
-  document.querySelector("#comparison-body").innerHTML = rows.map(([label, ...values]) => `<tr><td>${label}</td>${values.map((value) => `<td>${value}</td>`).join("")}</tr>`).join("");
-  document.querySelector("#comparison-panel").hidden = false;
-  document.querySelector("#comparison-panel").scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-function showResults() {
-  renderResults();
-  quizSection.style.display = "none";
-  resultsSection.hidden = false;
-  resultsSection.scrollIntoView({ behavior: "smooth" });
-}
-
-function startFinder() {
-  quizSection.style.display = "block";
-  resultsSection.hidden = true;
-  renderQuestion();
-  quizSection.scrollIntoView({ behavior: "smooth" });
-}
-
-document.querySelectorAll("[data-start]").forEach((button) => button.addEventListener("click", startFinder));
-nextButton.addEventListener("click", () => {
-  if (!answers[questions[currentStep].key]) {
-    formError.hidden = false;
-    return;
-  }
-  if (currentStep === questions.length - 1) showResults();
-  else { currentStep += 1; renderQuestion(); }
-});
-backButton.addEventListener("click", () => {
-  if (currentStep > 0) { currentStep -= 1; renderQuestion(); }
-});
-document.querySelector("#restart-button").addEventListener("click", () => {
-  currentStep = 0;
-  comparisonSelection.clear();
-  Object.keys(answers).forEach((key) => delete answers[key]);
-  document.querySelector("#comparison-panel").hidden = true;
-  startFinder();
-});
-document.querySelector("#compare-button").addEventListener("click", renderComparison);
-document.querySelector("#close-comparison").addEventListener("click", () => {
-  document.querySelector("#comparison-panel").hidden = true;
-});
+function openDetail(id) { const item = programmes.find((programme) => programme.id === id); if (!item) return; $("#detail-content").innerHTML = `<div class="eyebrow">${item.field} · Demo-Profil</div><h2>${item.name}</h2><p>${item.description}</p><h3>Typische Studieninhalte</h3><ul>${item.contents.map((content) => `<li>${content}</li>`).join("")}</ul><h3>Passende Berufsfelder</h3><p>${item.careers.join(" · ")}</p><p><strong>Hinweis:</strong> Dieses Profil enthält keine offiziellen Hochschulangebote, NC-Werte oder Zulassungsaussagen.</p>`; $("#detail-dialog").showModal(); }
+function applyTheme(theme) { document.documentElement.dataset.theme = theme; localStorage.setItem(STORAGE.theme, theme); $("#theme-label").textContent = theme === "dark" ? "Light Mode" : "Dark Mode"; }
+document.querySelectorAll("[data-start]").forEach((button) => button.addEventListener("click", startFinder)); $("#next-button").addEventListener("click", () => { if (!answers[questions[step].key]) { $("#form-error").hidden = false; return; } if (step === questions.length - 1) showResults(); else { step += 1; saveState(); renderQuestion(); } }); $("#back-button").addEventListener("click", () => { if (step > 0) { step -= 1; saveState(); renderQuestion(); } }); $("#restart-button").addEventListener("click", () => { answers = {}; step = 0; comparisonSelection.clear(); localStorage.removeItem(STORAGE.answers); localStorage.removeItem(STORAGE.step); $("#comparison-panel").hidden = true; startFinder(); }); $("#compare-button").addEventListener("click", renderComparison); $("#close-comparison").addEventListener("click", () => { $("#comparison-panel").hidden = true; }); $("#detail-close").addEventListener("click", () => $("#detail-dialog").close());
+["explorer-search","field-filter","state-filter","mode-filter","sort-select"].forEach((id) => $(`#${id}`).addEventListener("input", renderExplorer)); $("#reset-filters").addEventListener("click", () => { ["explorer-search","field-filter","state-filter","mode-filter"].forEach((id) => $(`#${id}`).value = ""); $("#sort-select").value = "name"; renderExplorer(); }); $("#show-favorites").addEventListener("click", () => { $("#explorer-search").value = ""; $("#field-filter").value = ""; $("#state-filter").value = ""; $("#mode-filter").value = ""; renderExplorer(); document.querySelectorAll(".explorer-card").forEach((card) => { if (!favorites.has(card.querySelector("[data-favorite]").dataset.favorite)) card.hidden = true; }); $("#explorer").scrollIntoView({ behavior: "smooth" }); });
+$("#mobile-menu-button").addEventListener("click", () => { const nav = $("#main-nav"); const open = nav.classList.toggle("open"); $("#mobile-menu-button").setAttribute("aria-expanded", String(open)); }); $("#main-nav").querySelectorAll("a").forEach((link) => link.addEventListener("click", () => { $("#main-nav").classList.remove("open"); $("#mobile-menu-button").setAttribute("aria-expanded", "false"); }));
+const savedTheme = localStorage.getItem(STORAGE.theme); const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches; applyTheme(savedTheme || (systemDark ? "dark" : "light")); $("#theme-toggle").addEventListener("click", () => applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark")); renderExplorer();
