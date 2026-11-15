@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="StudyMatch AI hilft dir, passende Studienrichtungen zu entdecken."
+    />
+    <title>StudyMatch AI – Finde, was zu dir passt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#start" aria-label="StudyMatch AI Startseite">
+        <span class="brand-mark">✦</span>
+        <span>StudyMatch <em>AI</em></span>
+      </a>
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <a href="#so-funktionierts">So funktioniert's</a>
+        <a href="#beispieldaten">Beispieldaten</a>
+      </nav>
+      <button class="button button-small button-dark nav-cta" data-start>
+        Studienfinder starten <span>→</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero section-shell" id="start">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="status-dot"></span> Dein Weg. Deine Möglichkeiten.</div>
+          <h1>Finde ein Studium, das <span>zu dir passt.</span></h1>
+          <p class="hero-text">
+            Beantworte ein paar Fragen zu deinen Interessen und Stärken. StudyMatch AI zeigt dir
+            nachvollziehbare Studienideen, die wirklich zu dir passen könnten.
+          </p>
+          <div class="hero-actions">
+            <button class="button button-primary" data-start>Jetzt entdecken <span>→</span></button>
+            <a class="text-link" href="#so-funktionierts">Mehr erfahren <span>↓</span></a>
+          </div>
+          <div class="trust-row">
+            <div class="avatar-stack" aria-hidden="true">
+              <span>J</span><span>M</span><span>L</span><span>+</span>
+            </div>
+            <p>Für neugierige Menschen mit großen Ideen</p>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Vorschau einer Studienempfehlung">
+          <div class="orb orb-one"></div>
+          <div class="orb orb-two"></div>
+          <div class="floating-note note-top"><span>✦</span> Persönlich</div>
+          <div class="recommendation-card">
+            <div class="card-label">DEINE TOP-EMPFEHLUNG</div>
+            <div class="card-icon">⌁</div>
+            <h2>Medieninformatik</h2>
+            <p>Technologie trifft Kreativität</p>
+            <div class="match-line">
+              <span>Passt zu dir</span><strong>94%</strong>
+            </div>
+            <div class="progress-track"><span style="width: 94%"></span></div>
+            <div class="card-tags"><span>Digital</span><span>Kreativ</span><span>Zukunft</span></div>
+          </div>
+          <div class="floating-note note-bottom"><span>↗</span> Neue Perspektiven</div>
+        </div>
+      </section>
+
+      <section class="feature-strip section-shell" id="so-funktionierts">
+        <div class="section-intro">
+          <div class="eyebrow">Drei einfache Schritte</div>
+          <h2>Weniger Zweifel.<br /><span>Mehr Klarheit.</span></h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-number">01</div>
+            <div class="feature-icon purple">⌁</div>
+            <h3>Du erzählst uns von dir</h3>
+            <p>Interessen, Stärken und Wünsche – ganz ohne komplizierte Tests.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-number">02</div>
+            <div class="feature-icon orange">✦</div>
+            <h3>Wir verbinden die Punkte</h3>
+            <p>Ein transparenter Algorithmus vergleicht deine Antworten mit Studienprofilen.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-number">03</div>
+            <div class="feature-icon green">↗</div>
+            <h3>Du entdeckst Möglichkeiten</h3>
+            <p>Erhalte inspirierende Ideen und erfahre, warum sie zu dir passen.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="data-banner section-shell" id="beispieldaten">
+        <div>
+          <div class="eyebrow">Transparenz zuerst</div>
+          <h2>Ein Prototyp mit <span>Beispieldaten.</span></h2>
+        </div>
+        <p>
+          Die Empfehlungen dienen zur Orientierung. Hochschulen, Studiengänge und Voraussetzungen
+          werden in dieser ersten Version nicht als offizielle Angebote dargestellt.
+        </p>
+      </section>
+
+      <section class="finder-section" id="finder">
+        <div class="finder-shell">
+          <div class="finder-header">
+            <div>
+              <div class="eyebrow">StudyMatch AI · Studienfinder</div>
+              <h2>Was passt zu <span>dir?</span></h2>
+            </div>
+            <div class="step-counter"><span id="current-step">1</span> / <span id="total-steps">6</span></div>
+          </div>
+          <div class="progress-bar"><span id="quiz-progress"></span></div>
+          <form id="quiz-form" novalidate>
+            <div id="question-container"></div>
+            <div class="quiz-actions">
+              <button type="button" class="button button-ghost" id="back-button" hidden>← Zurück</button>
+              <button type="button" class="button button-primary" id="next-button">Weiter <span>→</span></button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="results-section" id="results" hidden>
+        <div class="results-shell">
+          <div class="results-heading">
+            <div>
+              <div class="eyebrow">Deine persönliche Auswertung</div>
+              <h2>Deine nächsten <span>Möglichkeiten.</span></h2>
+              <p>Diese Vorschläge basieren auf deinen Antworten und sind als erste Orientierung gedacht.</p>
+            </div>
+            <button class="button button-ghost" id="restart-button">↻ Neu starten</button>
+          </div>
+          <div class="results-layout">
+            <div id="results-list" class="results-list"></div>
+            <aside class="why-box">
+              <div class="feature-icon purple">✦</div>
+              <h3>Wie entsteht dein Match?</h3>
+              <p>
+                Jede Antwort wird mit Merkmalen der Beispieldaten verglichen. Je mehr Merkmale
+                übereinstimmen, desto höher der nachvollziehbare Wert.
+              </p>
+              <div class="legend"><span class="legend-dot"></span> Kein Versprechen, sondern ein Startpunkt für deine Recherche.</div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="brand"><span class="brand-mark">✦</span><span>StudyMatch <em>AI</em></span></div>
+      <p>Orientierung für deinen nächsten Schritt.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
