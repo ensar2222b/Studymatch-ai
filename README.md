@@ -15,6 +15,12 @@ KI-API und ist für GitHub Pages geeignet.
 
 [GitHub-Pages-Demo öffnen](https://ensar2222b.github.io/Studymatch-ai/)
 
+## Aktuelle Ansichten
+
+![StudyMatch AI auf einem Smartphone](assets/ui-refinement-mobile.png)
+
+![StudyMatch AI auf Desktop](assets/ui-refinement-desktop.png)
+
 ## Funktionen
 
 - 11 verständliche Finder-Fragen mit „Ich bin mir unsicher“
@@ -45,6 +51,14 @@ externen Fonts und keine überladenen Verläufe oder Glow-Effekte.
 
 Die Gestaltung wurde für 390 px, 768 px und 1440 px ausgelegt. Geschäftslogik, Datenmodell,
 Matching, Favoriten, Vergleich und lokale Speicherung bleiben unverändert.
+
+### UI/UX Refinement
+
+Die nachfolgende Präzisierung fokussiert die mobile Nutzung, ohne die Markenidentität neu zu
+definieren. Der Hero ist auf kleinen iPhones kompakter, die Beschreibung kürzer und die
+Beispielkarte als nicht-personalisiertes Beispielprofil gekennzeichnet. Die frühere Zahlenleiste
+wurde durch drei Schritte zur Funktionsweise ersetzt. Dadurch bleibt die Startseite informativ,
+ohne unnötige Zahlen oder große vertikale Abstände.
 
 ## Verifizierte Datenquellen
 
