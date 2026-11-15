@@ -1,5 +1,14 @@
 # Changelog
 
+## [Unreleased] – Professional UI/UX Redesign
+
+- Visuelle Identität auf seriöses Dunkelblau/Petrol, neutrale Flächen und dezente Akzentfarben umgestellt
+- Hero, Finder, Ergebnis-Dashboard, Explorer, Advisor und Footer neu hierarchisiert
+- Emojis und dekorative UI-Muster entfernt; Marken- und Statussymbole als lokale SVGs umgesetzt
+- Touchfreundliche Controls, sichtbare Fokuszustände und reduzierte Bewegung für `prefers-reduced-motion` ergänzt
+- Mobile Navigation und Kartenlayouts für 390 px, 768 px und Desktop weiter optimiert
+- README um Design-Philosophie, Designsystem und Qualitätssicherung ergänzt
+
 ## [1.3.0] – Verified Study Sources & Core Quality
 
 - Zehn kuratierte Studiengangsprofile mit offiziellen Hochschul-Links

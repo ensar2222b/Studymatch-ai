@@ -3,7 +3,9 @@
 > **Version 1.3 · Studienorientierung mit kuratierten Hochschulquellen**
 
 StudyMatch AI hilft Schülerinnen und Schülern, Studienideen anhand von Interessen, Stärken und
-Präferenzen zu entdecken. Die Website bleibt statisch, ohne Registrierung, Tracking, Backend oder
+Präferenzen zu entdecken. Das Interface ist bewusst ruhig, klar und mobil nutzbar gestaltet: Eine
+saubere visuelle Hierarchie, nachvollziehbare Interaktionen und gut lesbare Kontraste stehen vor
+dekorativen Effekten. Die Website bleibt statisch, ohne Registrierung, Tracking, Backend oder
 KI-API und ist für GitHub Pages geeignet.
 
 > **Wichtig:** Ein Match-Score ist eine Orientierung innerhalb der eingebundenen Auswahl. Er ist
@@ -25,6 +27,24 @@ KI-API und ist für GitHub Pages geeignet.
 - Detailansicht und Favoriten für Studiengänge
 - Vergleich von maximal drei Studiengängen
 - Light-/Dark-Mode und responsive mobile Navigation
+
+## Design-Philosophie und Designsystem
+
+Das Redesign orientiert sich an etablierten Prinzipien aus Produktdesign und Accessibility:
+klare Informationshierarchie, vorhersehbare Navigation, großzügige Touchflächen, sichtbare
+Fokuszustände und reduzierte Bewegung. StudyMatch AI verwendet keine Emojis als UI-Icons, keine
+externen Fonts und keine überladenen Verläufe oder Glow-Effekte.
+
+| Bereich | Entscheidung |
+| --- | --- |
+| Farben | Dunkelblau/Petrol als Primärfarbe, neutrales Hellgrau als Fläche, zurückhaltendes Terrakotta als Akzent |
+| Typografie | Systemschrift-Stack ohne externe Requests; starke Überschriften, gut lesbare Fließtexte |
+| Komponenten | Dezente Rahmen, kleine bis mittlere Radien, zurückhaltende Schatten und klare Zustände |
+| Interaktion | Sichtbare `:focus-visible`-Zustände, mindestens 40–46 px große Bedienelemente, reduzierte Bewegung |
+| Responsive Layouts | Mobile Navigation, einspaltige Karten und Explorer-Filter für kleine Viewports; Breakpoints bei 800, 930 und 480 px |
+
+Die Gestaltung wurde für 390 px, 768 px und 1440 px ausgelegt. Geschäftslogik, Datenmodell,
+Matching, Favoriten, Vergleich und lokale Speicherung bleiben unverändert.
 
 ## Verifizierte Datenquellen
 
@@ -86,6 +106,12 @@ node --check app.js
 node --test tests/matching.test.mjs
 git diff --check
 ```
+
+### Qualitätssicherung
+
+Für das Redesign wurden Syntax- und Datenlogiktests sowie manuelle Browser-Flows für Finder,
+Explorer, Filter, Favoriten, Vergleich, Theme und mobile Navigation durchgeführt. Zusätzlich
+wurden horizontale Überläufe und sichtbare Fokuszustände in den Ziel-Viewports geprüft.
 
 ## Architektur und Datenschutz
 
