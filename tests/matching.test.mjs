@@ -30,8 +30,17 @@ test("unsure answers do not reduce the score", () => {
 });
 
 test("the app contains a curated set of official programme sources", () => {
-  const source = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
+  const source = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8")
+    + fs.readFileSync(new URL("../programmes-catalog.js", import.meta.url), "utf8");
   const links = source.match(/officialUrl:/g) || [];
-  assert.ok(links.length >= 8);
+  assert.ok(links.length >= 37);
   assert.doesNotMatch(source, /example\.com|wikipedia\.org/);
+});
+
+test("each expanded programme includes detail fields and an official source", () => {
+  const source = fs.readFileSync(new URL("../programmes-catalog.js", import.meta.url), "utf8");
+  assert.ok((source.match(/related:/g) || []).length >= 27);
+  assert.ok((source.match(/requirements:/g) || []).length >= 27);
+  assert.ok((source.match(/officialUrl:/g) || []).length >= 27);
+  assert.doesNotMatch(source, /NC|Gehalt|Zulassungsvoraussetzung/);
 });

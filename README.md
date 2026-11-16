@@ -1,6 +1,6 @@
 # StudyMatch AI
 
-> **Version 1.3 · Studienorientierung mit kuratierten Hochschulquellen**
+> **Version 1.4 · Studienorientierung mit 37 quellenbasierten Profilen**
 
 StudyMatch AI hilft Schülerinnen und Schülern, Studienideen anhand von Interessen, Stärken und
 Präferenzen zu entdecken. Das Interface ist bewusst ruhig, klar und mobil nutzbar gestaltet: Eine
@@ -32,6 +32,7 @@ KI-API und ist für GitHub Pages geeignet.
 - Sortierung nach Name, Fachbereich oder Hochschule
 - Detailansicht und Favoriten für Studiengänge
 - Vergleich von maximal drei Studiengängen
+- 37 redaktionelle Studienprofile mit Inhalten, Anforderungen, Fachanteilen, Berufsfeldern und ähnlichen Richtungen
 - Light-/Dark-Mode und responsive mobile Navigation
 
 ## Design-Philosophie und Designsystem
@@ -62,9 +63,26 @@ ohne unnötige Zahlen oder große vertikale Abstände.
 
 ## Verifizierte Datenquellen
 
-Die aktuelle Auswahl besteht aus redaktionell kompakten Profilen, die auf den folgenden offiziellen
-Hochschulseiten basieren. Die Links wurden am **15. November 2026** recherchiert. StudyMatch AI
-übernimmt keine vollständigen Datenbanken und zeigt keine NC-Werte oder Zulassungsvoraussetzungen.
+Die aktuelle Auswahl besteht aus 37 redaktionell kompakten Profilen, die auf offiziellen
+Hochschulseiten basieren. Zehn Quellen waren bereits Bestandteil der vorherigen Version; 30
+weitere Quellen sind in `programmes-catalog.js` dokumentiert. Die Quellenliste wurde am
+**16. November 2026** zusammengestellt. StudyMatch AI übernimmt keine vollständigen Datenbanken
+und zeigt keine NC-Werte, Gehälter oder Zulassungsvoraussetzungen.
+
+Die neue Datenbasis umfasst unter anderem:
+
+| Bereich | Beispiele offizieller Quellen |
+| --- | --- |
+| Technik und Informatik | TUM, RWTH Aachen, Universität Hamburg, TU Dresden, Ruhr-Universität Bochum, OVGU Magdeburg |
+| Wirtschaft und Schnittstellen | Universität zu Köln, Universität Passau, KIT, TU Dortmund |
+| Natur und Umwelt | Universität Freiburg, Universität Heidelberg, Universität Bonn, Universität Bremen, Leuphana, Universität Rostock, Universität Jena |
+| Gesellschaft, Gesundheit und Bildung | LMU München, Universität Leipzig, HAW Hamburg, Hochschule München, TH Köln, Universität Potsdam |
+| Medien, Kommunikation und Gestaltung | TH Köln, Universität Leipzig, Universität Münster, TU Berlin, HTW Berlin |
+
+Die Links werden ausschließlich als Quellenverweise verwendet. Inhalte, Anforderungen und
+Fachanteile sind kompakte Orientierungstexte; „unklar“ bedeutet, dass die App keine belastbare
+Aussage zum Anteil macht. Für aktuelle Modulpläne, Fristen und verbindliche Voraussetzungen ist
+immer die jeweilige Hochschule maßgeblich.
 
 | Studiengang | Hochschule | Offizielle Quelle |
 | --- | --- | --- |
@@ -129,8 +147,8 @@ wurden horizontale Überläufe und sichtbare Fokuszustände in den Ziel-Viewport
 
 ## Architektur und Datenschutz
 
-Die Anwendung besteht aus `index.html`, `styles.css` und `app.js`; `index.html` liegt im
-Repository-Root für GitHub Pages. Antworten und Favoriten werden ausschließlich mit
+Die Anwendung besteht aus `index.html`, `styles.css`, `programmes-catalog.js` und `app.js`;
+`index.html` liegt im Repository-Root für GitHub Pages. Antworten und Favoriten werden ausschließlich mit
 `localStorage` im Browser gehalten. Es gibt keine Cookies, Analyse-Skripte, Konten oder
 Serverübertragung. Externe Links führen direkt zu den offiziellen Hochschulseiten.
 
@@ -145,8 +163,8 @@ Nach dem Merge:
 
 ## Einschränkungen und Roadmap
 
-Die Datenmenge ist bewusst klein und redaktionell gepflegt. Es gibt keine automatische
-Synchronisierung mit Hochschulen; Quellen müssen regelmäßig manuell geprüft werden. Der nächste
-sinnvolle Schritt ist ein versionierter Datenpflegeprozess mit Änderungsdatum, Quellenprüfung und
-automatisierten Link-Checks. Eine sichere Advisor-Backend-Architektur bleibt Zukunftsmusik und wird
-in dieser Version nicht implementiert.
+Die Profile sind redaktionell gepflegt und werden nicht automatisch mit Hochschulen synchronisiert.
+Quellen müssen regelmäßig manuell geprüft werden; URL-Erreichbarkeit kann sich ändern. Der nächste
+sinnvolle Schritt ist ein versionierter Datenpflegeprozess mit Änderungsdatum, Modulhandbuch-Links
+und automatisierten Link-Checks. Eine sichere Advisor-Backend-Architektur bleibt Zukunftsmusik und
+wird in dieser Version nicht implementiert.

@@ -250,6 +250,11 @@ h1 span, h2 span { color: var(--primary); }
 .detail-dialog p, .detail-dialog ul { color: var(--muted); font-size: 14px; }
 .detail-dialog ul { padding-left: 20px; }
 .detail-dialog h3 { font-size: 18px; margin-top: 24px; }
+.detail-grid { display: grid; gap: 22px; grid-template-columns: 1fr 1fr; }
+.detail-facts { display: grid; gap: 8px; margin: 14px 0 0; }
+.detail-facts div { align-items: baseline; border-top: 1px solid var(--line); display: flex; justify-content: space-between; padding-top: 8px; }
+.detail-facts dt { color: var(--muted); font-size: 12px; }
+.detail-facts dd { color: var(--primary); font-size: 12px; font-weight: 750; margin: 0; text-transform: capitalize; }
 .site-footer { align-items: center; border-top: 1px solid var(--line); color: var(--muted); display: flex; gap: 25px; justify-content: space-between; margin: auto; max-width: 1280px; padding: 28px 32px; }
 .site-footer p { margin: 0 auto 0 0; }
 .institution-label { color: var(--muted); display: block; font-size: 11px; margin-top: 5px; }
@@ -295,6 +300,7 @@ h1 span, h2 span { color: var(--primary); }
   .results-toolbar { align-items: stretch; flex-direction: column; gap: 13px; }
   .results-toolbar .button { width: 100%; }
   .advisor-card { gap: 35px; grid-template-columns: 1fr; padding: 30px; }
+  .detail-grid { grid-template-columns: 1fr; }
   .explorer-section { padding-bottom: 70px; padding-top: 70px; }
 }
 @media (max-width: 480px) {
