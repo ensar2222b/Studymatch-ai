@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.0] – Expanded Study Catalogue
+
+- Studienkatalog auf 37 Profile aus unterschiedlichen Fachbereichen und Regionen erweitert
+- Offizielle Hochschulquellen in `programmes-catalog.js` gebündelt
+- Detailansichten um Inhalte, fachliche Orientierung, Mathematik-/Programmierhinweise,
+  Berufsfelder und ähnliche Studienrichtungen ergänzt
+- Ergebnis-Karten bieten jetzt direkten Zugriff auf die ausführliche Detailansicht
+- Tests um Mindestumfang und Pflichtfelder der quellenbasierten Profile erweitert
+- README um Datenbasis, Quellenstrategie und Einschränkungen ergänzt
+
 ## [Unreleased] – UI/UX Refinement
 
 - Hero-Texte und vertikale Abstände für kleine iPhone-Displays kompakter gestaltet

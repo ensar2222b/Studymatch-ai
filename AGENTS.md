@@ -10,7 +10,8 @@ Hochschulangebote, Zulassungsaussagen oder Studienplatzversprechen dargestellt w
 
 - Verwende plain HTML, CSS und JavaScript ohne Build-Schritt und ohne unnötige Abhängigkeiten.
 - `index.html` bleibt der GitHub-Pages-Einstiegspunkt im Repository-Root.
-- Daten und Matching-Logik liegen aktuell in `app.js`; halte Profil- und Fragedaten strukturiert.
+- Matching-Logik liegt in `app.js`; das Studienprofil-Katalogmodul liegt in `app.js` und
+  `programmes-catalog.js`. Halte Profil- und Fragedaten strukturiert und quellenbezogen.
 - `tests/matching.test.mjs` prüft die zentralen Score-Verträge; bei Gewichtsänderungen aktualisieren.
 - Der Vergleich darf höchstens drei Profile gleichzeitig anzeigen.
 - Quiz-Fortschritt, Favoriten und Theme werden ausschließlich über die dokumentierten `localStorage`-Schlüssel gespeichert.
@@ -25,6 +26,8 @@ Hochschulangebote, Zulassungsaussagen oder Studienplatzversprechen dargestellt w
 - Keine erfundenen Hochschulen, Studienordnungen, Zulassungsvoraussetzungen oder offiziellen Links.
 - Neue Studienprofile dürfen nur mit einer überprüfbaren offiziellen Hochschulquelle aufgenommen
   werden; Quelle und Recherche-/Prüfdatum gehören in die README.
+- Detailfelder wie Mathematik- und Programmieranteil dürfen bei fehlender belastbarer Quelle nur
+  als `unklar` geführt werden.
 - Keine NC-Werte, Bewerbungsfristen, Gehälter oder Zulassungsaussagen aus Such-Snippets ableiten.
 - „Unsicher“-Antworten dürfen den Score nicht negativ verzerren.
 - Bestehende Änderungen anderer Personen niemals zurücksetzen; nur den eigenen Scope bearbeiten.
